@@ -20,21 +20,7 @@
 <div class="container mt-5">
   <div class="row row-cols-8">
     <!-- COMPONENTE CARD A PASAR ANGULAR -->
-    <div ng-repeat="poke in pokenames" class="col">
-      <div class="card">
-        <img
-          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-vi/x-y/shiny/1.png"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <!-- COMPONENTE ANGULARJS TO UPGRADE -->
-          <h5 class="card-title">{{poke.name}}</h5>
-          <!-- FINAL COMPONENTE ANGULARJS TO UPGRADE -->
-          <p class="card-text">Peso:</p>
-        </div>
-      </div>
-    </div>
+    <app-card [poke-Names]="pokemons"></app-card>
     <!-- FINAL COMPONENTE CARD A PASAR ANGULAR -->
   </div>
 </div>
