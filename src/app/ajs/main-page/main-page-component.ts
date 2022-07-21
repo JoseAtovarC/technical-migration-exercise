@@ -1,19 +1,23 @@
 import * as angular from 'angular';
-
-export class MainPage {
-
-
-    constructor () {}
+import { downgradeInjectable } from '@angular/upgrade/static';
+import { PokemonsService } from 'src/app/services/pokemons.service';
 
 
 
-}
-
-const inject: string[] = [];
+const inject: string[] = ["PokemonsService", "$scope"];
 const selector: string = 'mainPage';
 const options = {
     bindings: {},
-    controller: MainPage,
+    controller: async function (PokemonsService: any, $scope: any) {
+        $scope.pokenames = []
+        await PokemonsService.getPokemons().then((p: any) => {
+
+            return $scope.pokenames = p.results
+
+        })
+        console.log($scope.pokenames)
+
+    },
     controllerAs: '$ctrl',
     templateUrl: 'main-page-component.html'
 };
@@ -32,4 +36,6 @@ try {
         selector,
         options
     );
+    angular.module('main-module')
+        .factory('PokemonsService', downgradeInjectable(PokemonsService) as any)
 }

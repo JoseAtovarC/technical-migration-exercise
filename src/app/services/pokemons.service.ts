@@ -10,8 +10,8 @@ export class PokemonsService {
 
   constructor(private http: HttpClient) { }
 
-  public getPokemons(): Observable<any> {
-    return this.http.get(this.pokeApi)
+  public getPokemons(): Promise<any> {
+    return this.http.get(this.pokeApi).toPromise()
   }
 
 }
