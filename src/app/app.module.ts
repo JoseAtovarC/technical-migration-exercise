@@ -4,8 +4,9 @@ import { UpgradeModule } from '@angular/upgrade/static';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { CardComponent } from './components/card/card.component';
+import { pokeNameComponentWrapper } from './ajs/poke-name-component/poke-name-component';
 
-const downgradedAngularComponents: any[] = [CardComponent];
+const downgradedAngularComponents: any[] = [CardComponent, pokeNameComponentWrapper];
 
 @NgModule({
   declarations: [
