@@ -1,4 +1,6 @@
 import * as angular from 'angular';
+import { downgradeComponent } from '@angular/upgrade/static';
+import { SelectComponent } from 'src/app/components/select/select.component';
 
 const selector: string = 'formPoke';
 
@@ -27,6 +29,7 @@ const options: any = {
 <input type="text" ng-model="name"  required class="form-control" placeholder="Nombre o ID"  />
 
 </div>
+<select-component class="col"></select-component>
 
 <div class="col">
 <button type="submit" class="btn btn-primary">Buscar</button>
@@ -55,3 +58,6 @@ mod.factory('getPokemonInfo', ["$http", function ($http: any) {
         }
     };
 }])
+angular.module('form.module')
+    .directive('selectComponent',
+        downgradeComponent({ component: SelectComponent }) as angular.IDirectiveFactory)

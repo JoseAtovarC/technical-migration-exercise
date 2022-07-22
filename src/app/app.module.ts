@@ -5,12 +5,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { CardComponent } from './components/card/card.component';
 import { pokeNameComponentWrapper } from './ajs/poke-name-component/poke-name-component';
+import { SelectComponent } from './components/select/select.component';
 
 const downgradedAngularComponents: any[] = [CardComponent, pokeNameComponentWrapper];
 
 @NgModule({
   declarations: [
     ...downgradedAngularComponents,
+    SelectComponent,
 
   ],
   imports: [UpgradeModule, BrowserModule, NgbModule, HttpClientModule],
