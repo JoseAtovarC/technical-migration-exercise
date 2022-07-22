@@ -3,12 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { UpgradeModule } from '@angular/upgrade/static';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import { CardComponent } from './components/card/card.component';
 
-const downgradedAngularComponents: any[] = [];
+const downgradedAngularComponents: any[] = [CardComponent];
 
 @NgModule({
   declarations: [
-    ...downgradedAngularComponents
+    ...downgradedAngularComponents,
+
   ],
   imports: [UpgradeModule, BrowserModule, NgbModule, HttpClientModule],
   providers: [],
