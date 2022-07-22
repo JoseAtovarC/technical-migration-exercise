@@ -38,7 +38,7 @@ try {
         options
     );
     angular.module('main-module')
-        .directive('appCard',
+        .directive('cardComponent',
             downgradeComponent({ component: CardComponent }) as angular.IDirectiveFactory)
     angular.module('main-module')
         .factory('PokemonsService', downgradeInjectable(PokemonsService) as any)
