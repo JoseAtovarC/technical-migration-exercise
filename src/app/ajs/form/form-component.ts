@@ -1,4 +1,7 @@
 import * as angular from 'angular';
+import { downgradeComponent } from '@angular/upgrade/static';
+import { SelectComponent } from 'src/app/components/select/select.component';
+
 
 const selector: string = 'formPoke';
 
@@ -8,26 +11,35 @@ const options: any = {
 
     controller: async function ($scope: any, getPokemonInfo: any,) {
         $scope.name = ""
-        $scope.selected = ""
+        $scope.selected = localStorage.getItem("selected")
         $scope.handleSubmit = async () => {
-            await getPokemonInfo.getPokemon($scope.name).then((data: any) => {
-                console.log(data)
-            })
+
+            if (localStorage.getItem("selected") === "" || localStorage.getItem("selected") === null) {
+                $scope.selected = $scope.name
+                localStorage.setItem("selected", $scope.name)
+                await getPokemonInfo.getPokemon($scope.name).then((data: any) => {
+                    console.log(data)
+                })
+            } else {
+
+                $scope.selected = localStorage.getItem("selected")
+                await getPokemonInfo.getPokemon($scope.selected).then((data: any) => {
+                    console.log($scope.selected)
+                    console.log(data)
+                })
+
+                localStorage.removeItem("selected")
+            }
         }
-        $scope.addPoke = (poke: string) => {
-            console.log(poke)
-        }
+
     },
-
-
     controllerAs: '$ctrl',
     template: `<form  ng-submit="handleSubmit()">
 <div class="row">
 <div class="col">
 <input type="text" ng-model="name"  required class="form-control" placeholder="Nombre o ID"  />
-
 </div>
-
+<select-component class="col" [selected]="selected" ng-model="selected" ></select-component>
 <div class="col">
 <button type="submit" class="btn btn-primary">Buscar</button>
 </div>
@@ -55,3 +67,6 @@ mod.factory('getPokemonInfo', ["$http", function ($http: any) {
         }
     };
 }])
+angular.module('form.module')
+    .directive('selectComponent',
+        downgradeComponent({ component: SelectComponent }) as angular.IDirectiveFactory)
