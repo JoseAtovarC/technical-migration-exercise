@@ -1,7 +1,7 @@
 import * as angular from 'angular';
 import { downgradeComponent } from '@angular/upgrade/static';
 import { SelectComponent } from 'src/app/components/select/select.component';
-
+import { ApiServiceAngjs, PokeScope } from 'src/app/interface/poke-data';
 
 const selector: string = 'formPoke';
 
@@ -9,7 +9,7 @@ const inject: string[] = ["$scope", "getPokemonInfo"];
 
 const options: any = {
 
-    controller: async function ($scope: any, getPokemonInfo: any,) {
+    controller: async function ($scope: PokeScope, getPokemonInfo: ApiServiceAngjs,) {
         $scope.name = ""
         $scope.selected = localStorage.getItem("selected")
         $scope.handleSubmit = async () => {
@@ -56,7 +56,7 @@ mod.component(
     options
 );
 
-mod.factory('getPokemonInfo', ["$http", function ($http: any) {
+mod.factory('getPokemonInfo', ["$http", function ($http: ng.IHttpService) {
 
     let pokeApiMoreData = "https://pokeapi.co/api/v2/pokemon/"
     return {

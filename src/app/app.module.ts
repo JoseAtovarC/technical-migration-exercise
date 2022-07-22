@@ -7,6 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CardComponent } from './components/card/card.component';
 import { pokeNameComponentWrapper } from './ajs/poke-name-component/poke-name-component';
 import { SelectComponent } from './components/select/select.component';
+import { PokemonsService } from './services/pokemons.service';
+import { ApiService } from './interface/poke-data';
 
 const downgradedAngularComponents: any[] = [CardComponent, pokeNameComponentWrapper];
 
@@ -17,7 +19,7 @@ const downgradedAngularComponents: any[] = [CardComponent, pokeNameComponentWrap
 
   ],
   imports: [UpgradeModule, BrowserModule, NgbModule, HttpClientModule, FormsModule],
-  providers: [],
+  providers: [{ provide: ApiService, useExisting: PokemonsService }],
 })
 export class AppModule implements DoBootstrap {
   static entryComponents = [...downgradedAngularComponents];
