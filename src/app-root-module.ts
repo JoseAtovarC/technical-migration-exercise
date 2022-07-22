@@ -1,4 +1,5 @@
 import * as angular from 'angular';
+import "./app/ajs/form/form-component"
 
 class InitApp {
   constructor() { }
@@ -12,7 +13,8 @@ angular.module('app-root', [
   'app-templates',
   'ib-plus-routing-module',
   'main-module',
-  "pokeName.module"
+  "pokeName.module",
+  'form.module'
 ]);
 
 angular.module('app-root').run(InitApp);
