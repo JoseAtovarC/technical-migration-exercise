@@ -1,4 +1,5 @@
 import { DoBootstrap, NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { UpgradeModule } from '@angular/upgrade/static';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -15,7 +16,7 @@ const downgradedAngularComponents: any[] = [CardComponent, pokeNameComponentWrap
     SelectComponent,
 
   ],
-  imports: [UpgradeModule, BrowserModule, NgbModule, HttpClientModule],
+  imports: [UpgradeModule, BrowserModule, NgbModule, HttpClientModule, FormsModule],
   providers: [],
 })
 export class AppModule implements DoBootstrap {

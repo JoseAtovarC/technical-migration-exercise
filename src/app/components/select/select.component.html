@@ -1,1 +1,7 @@
-<input type="text" class="form-control" placeholder="Seleccionado" />
+<input
+  type="text"
+  class="form-control"
+  [(ngModel)]="selected"
+  placeholder="Seleccionado"
+  (change)="addNewPoke(selected)"
+/>
