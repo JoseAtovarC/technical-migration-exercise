@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./select.component.css']
 })
 export class SelectComponent {
-  @Input() selected: any
+  @Input() selected: string = '';
 
   constructor() { }
 

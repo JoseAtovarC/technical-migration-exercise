@@ -1,33 +1,31 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { ApiService, pokeData } from '../interface/poke-data';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PokemonsService {
+export class PokemonsService implements ApiService {
   private pokeApi = "https://pokeapi.co/api/v2/pokemon/?limit=20"
-  private pokeApiMoreInfo = "https://pokeapi.co/api/v2/pokemon/"
+
 
   constructor(private http: HttpClient) { }
 
-  public async getPokemons(): Promise<any> {
-    let pokeArray: any = []
+  public async getPokemons() {
+    let pokeArray: pokeData[] = []
     let res: any = await this.http.get(this.pokeApi).toPromise()
-    let pokemons = await res.results.map(async (pokemon: any) => {
-      await this.http.get(this.pokeApiMoreInfo + pokemon.name).toPromise()
+    await res.results.map(async (pokemon: any) => {
+      await this.http.get(pokemon.url).toPromise()
         .then(async (response: any) => {
-
-          pokeArray.push(response)
+          const pokeObj = {
+            name: response.name,
+            weight: response.weight,
+            img: response.sprites.front_default
+          }
+          pokeArray.push(pokeObj)
         })
-      return pokeArray
+
     })
-    await Promise.allSettled(pokemons)
-      .then((d: any) => {
-        pokeArray = d[0].value
-        return pokeArray
-      }
-      )
 
     return pokeArray
   }

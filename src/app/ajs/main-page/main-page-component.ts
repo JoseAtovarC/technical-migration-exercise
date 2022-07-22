@@ -1,18 +1,20 @@
 import * as angular from 'angular';
 import { downgradeInjectable } from '@angular/upgrade/static';
-import { PokemonsService } from 'src/app/services/pokemons.service';
+import { ApiService } from 'src/app/interface/poke-data';
 import { CardComponent } from 'src/app/components/card/card.component';
 import { downgradeComponent } from '@angular/upgrade/static';
+import { pokeData } from 'src/app/interface/poke-data';
+import { PokeScope } from 'src/app/interface/poke-data';
 
 
-const inject: string[] = ["PokemonsService", "$scope"];
+const inject: string[] = [" ApiService ", "$scope"];
 const selector: string = 'mainPage';
 const options = {
     bindings: {},
-    controller: async function (PokemonsService: any, $scope: any) {
+    controller: async function (ApiService: ApiService, $scope: PokeScope) {
         $scope.pokenames = []
-        await PokemonsService.getPokemons().then((p: any) => {
-
+        await ApiService.getPokemons().then((p: pokeData) => {
+            console.log(p)
             return $scope.pokenames = p
 
         })
@@ -41,5 +43,5 @@ try {
         .directive('cardComponent',
             downgradeComponent({ component: CardComponent }) as angular.IDirectiveFactory)
     angular.module('main-module')
-        .factory('PokemonsService', downgradeInjectable(PokemonsService) as any)
+        .factory(' ApiService ', downgradeInjectable(ApiService) as angular.IDirectiveFactory)
 }
