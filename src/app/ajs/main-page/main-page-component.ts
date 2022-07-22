@@ -13,10 +13,10 @@ const options = {
         $scope.pokenames = []
         await PokemonsService.getPokemons().then((p: any) => {
 
-            return $scope.pokenames = p.results
+            return $scope.pokenames = p
 
         })
-        console.log($scope.pokenames)
+
 
     },
     controllerAs: '$ctrl',

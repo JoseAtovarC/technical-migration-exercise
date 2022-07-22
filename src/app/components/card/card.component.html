@@ -1,7 +1,7 @@
 <div *ngFor="let poke of pokeNames" class="col">
   <div class="card">
     <img
-      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-vi/x-y/shiny/1.png"
+      src="{{ poke.sprites.front_default }}"
       class="card-img-top"
       alt="..."
     />
@@ -9,7 +9,7 @@
       <!-- COMPONENTE ANGULARJS TO UPGRADE -->
       <poke-name [pokName]="poke.name"></poke-name>
       <!-- FINAL COMPONENTE ANGULARJS TO UPGRADE -->
-      <p class="card-text">Peso:</p>
+      <p class="card-text">Peso: {{ poke.weight }}</p>
     </div>
   </div>
 </div>
