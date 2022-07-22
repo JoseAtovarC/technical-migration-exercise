@@ -7,8 +7,8 @@ angular.module('pokeName.module', [])
         bindings: {
             pokName: '='
         },
-        transclude: true,
-        template: `<div ng-transclude>
+
+        template: `<div >
     <p>{{$ctrl.pokName}}</p>
     </div>`,
         controller: function () {
