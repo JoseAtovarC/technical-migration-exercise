@@ -1,108 +1,19 @@
 <h2 class="mb-5">Technical Migration Exercise</h2>
 
 <!-- FORM TO ANGULARJS COMPONENT -->
-<form>
-  <div class="row">
-    <div class="col">
-      <input type="text" class="form-control" placeholder="Nombre o ID">
-    </div>
-    <div class="col">
-      <input type="text" class="form-control" placeholder="Seleccionado">
-    </div>
-    <div class="col">
-      <button type="button" class="btn btn-primary">Buscar</button>
-    </div>
-  </div>
-</form>
+<form-poke></form-poke>
 <!-- FINISH FORM TO ANGULARJS COMPONENT -->
-
 
 <!-- MAIN VIEW -->
 <div class="container mt-5">
-  <div class="row row-cols-8">
-
+  <div>
     <!-- COMPONENTE CARD A PASAR ANGULAR -->
-    <div class="col">
-      <div class="card">
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-vi/x-y/shiny/1.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <!-- COMPONENTE ANGULARJS TO UPGRADE -->
-          <h5 class="card-title">Bulbasaur</h5>
-          <!-- FINAL COMPONENTE ANGULARJS TO UPGRADE -->
-          <p class="card-text">Peso:</p>
-        </div>
-      </div>
-    </div>
+    <card-component
+      class="row row-cols-8"
+      [poke-Names]="pokenames"
+    ></card-component>
     <!-- FINAL COMPONENTE CARD A PASAR ANGULAR -->
-
-
-    <div class="col">
-      <div class="card">
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-vi/x-y/shiny/1.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Bulbasaur</h5>
-          <p class="card-text">Vida:</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-vi/x-y/shiny/1.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Bulbasaur</h5>
-          <p class="card-text">Vida:</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-vi/x-y/shiny/1.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Bulbasaur</h5>
-          <p class="card-text">Vida:</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-vi/x-y/shiny/1.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Bulbasaur</h5>
-          <p class="card-text">Vida:</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-vi/x-y/shiny/1.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Bulbasaur</h5>
-          <p class="card-text">Vida:</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-vi/x-y/shiny/1.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Bulbasaur</h5>
-          <p class="card-text">Vida:</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-vi/x-y/shiny/1.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Bulbasaur</h5>
-          <p class="card-text">Vida:</p>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
-
-
-
 
 <!-- FINISH MAIN VIEW -->
