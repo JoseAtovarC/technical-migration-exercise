@@ -8,8 +8,8 @@ export interface pokeData {
 }
 
 
-export abstract class ApiService {
-    public abstract getPokemons(): any;
+export interface ApiService {
+    getPokemons(): any;
 }
 
 export interface ApiServiceAngjs {
