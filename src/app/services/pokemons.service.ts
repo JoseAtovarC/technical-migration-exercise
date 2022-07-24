@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiService, poke_data } from '../interface/poke-data';
-import { lastValueFrom } from 'rxjs';
+import { lastValueFrom, catchError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,9 @@ export class PokemonsService implements ApiService {
 
   public async getPokemons() {
     let pokeArray: poke_data[] = []
-    let res: any = await lastValueFrom(this.http.get(this.pokeApi))
+    let res: any = await lastValueFrom(this.http.get(this.pokeApi).pipe(
+      catchError(error => this.http.get(this.pokeApi))))
+
     await res.results.map(async (pokemon: any) => {
       await lastValueFrom(this.http.get(pokemon.url))
         .then(async (response: any) => {
