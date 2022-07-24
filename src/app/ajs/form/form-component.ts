@@ -19,13 +19,14 @@ const options: any = {
                 localStorage.setItem("selected", $scope.name)
                 await getPokemonInfo.getPokemon($scope.name).then((data: any) => {
                     console.log(data)
+                    alert(`${data.name} id: ${data.id}`)
                 })
             } else {
 
                 $scope.selected = localStorage.getItem("selected")
                 await getPokemonInfo.getPokemon($scope.selected).then((data: any) => {
-                    console.log($scope.selected)
                     console.log(data)
+                    alert(`${data.name} id: ${data.id}`)
                 })
 
                 localStorage.removeItem("selected")
@@ -34,7 +35,7 @@ const options: any = {
 
     },
     controllerAs: '$ctrl',
-    template: `<form  ng-submit="handleSubmit()">
+    template: `<form class=" p-4 d-flex justify-content-center "  ng-submit="handleSubmit()">
 <div class="row">
 <div class="col">
 <input type="text" ng-model="name"  required class="form-control" placeholder="Nombre o ID"  />

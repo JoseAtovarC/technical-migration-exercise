@@ -1,7 +1,7 @@
 import ng from "angular";
 
 
-export interface poke_data {
+export interface PokeData {
     name: string;
     weight: number;
     img: string;

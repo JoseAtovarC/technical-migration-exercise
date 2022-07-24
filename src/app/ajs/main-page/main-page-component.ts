@@ -1,6 +1,6 @@
 import * as angular from 'angular';
 import { downgradeInjectable, downgradeComponent } from '@angular/upgrade/static';
-import { ApiService, poke_data, PokeScope } from 'src/app/interface/poke-data';
+import { ApiService, PokeData, PokeScope } from 'src/app/interface/poke-data';
 import { PokemonsService } from 'src/app/services/pokemons.service';
 import { CardComponent } from 'src/app/components/card/card.component';
 
@@ -12,7 +12,7 @@ const options = {
     bindings: {},
     controller: async function (PokemonsServices: ApiService, $scope: PokeScope) {
         $scope.pokenames = []
-        await PokemonsServices.getPokemons().then((p: poke_data) => {
+        await PokemonsServices.getPokemons().then((p: PokeData) => {
 
             return $scope.pokenames = p
 
