@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { PokemonsService } from './pokemons.service';
-import { pokeData } from '../../app/interface/poke-data'
+import { poke_data } from '../../app/interface/poke-data'
 import { lastValueFrom, of } from 'rxjs';
 
 
