@@ -10,10 +10,7 @@ angular.module('pokeName.module', [])
 
         template: `<div >
     <p>{{$ctrl.pokName}}</p>
-    </div>`,
-        controller: function () {
-
-        }
+    </div>`
     })
 
 @Directive({
