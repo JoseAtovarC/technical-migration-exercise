@@ -1,5 +1,6 @@
-<h2 class="mb-5">Technical Migration Exercise</h2>
-
+<div class="bg-danger nav d-flex justify-content-center">
+  <h2 class="p-2 text-warning">Technical Migration Exercise</h2>
+</div>
 <!-- FORM TO ANGULARJS COMPONENT -->
 <form-poke></form-poke>
 <!-- FINISH FORM TO ANGULARJS COMPONENT -->
@@ -8,10 +9,7 @@
 <div class="container mt-5">
   <div>
     <!-- COMPONENTE CARD A PASAR ANGULAR -->
-    <card-component
-      class="row row-cols-8"
-      [poke-Names]="pokenames"
-    ></card-component>
+    <card-component class="row" [poke-Names]="pokenames"></card-component>
     <!-- FINAL COMPONENTE CARD A PASAR ANGULAR -->
   </div>
 </div>

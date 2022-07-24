@@ -1,11 +1,12 @@
 <div *ngFor="let poke of pokeNames" class="col">
-  <div class="card">
+  <div class="card m-2 shadow" style="width: 10rem">
     <img src="{{ poke.img }}" class="card-img-top" alt="..." />
     <div class="card-body">
       <!-- COMPONENTE ANGULARJS TO UPGRADE -->
       <poke-name [pokName]="poke.name"></poke-name>
       <!-- FINAL COMPONENTE ANGULARJS TO UPGRADE -->
       <p class="card-text">Peso: {{ poke.weight }}</p>
+      <!-- <p class="card-text"></p> -->
     </div>
   </div>
 </div>
