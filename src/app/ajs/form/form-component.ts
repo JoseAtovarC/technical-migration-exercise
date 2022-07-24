@@ -61,7 +61,7 @@ mod.factory('getPokemonInfo', ["$http", function ($http: ng.IHttpService) {
     let pokeApiMoreData = "https://pokeapi.co/api/v2/pokemon/"
     return {
         getPokemon: async function (name: string) {
-            return await $http.get(pokeApiMoreData + name).then((response: any) => {
+            return $http.get(pokeApiMoreData + name).then((response: any) => {
                 return response.data;
             })
         }
