@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ApiService, PokeData } from '../interface/poke-data';
-import { lastValueFrom, catchError } from 'rxjs';
+import { ApiService, PokeData, PokeApiResult, PokeApi, Pokemon } from '../interface/poke-data';
+import { lastValueFrom, catchError, Observable, map, mergeMap, forkJoin } from 'rxjs';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,25 +14,26 @@ export class PokemonsService implements ApiService {
 
   constructor(private http: HttpClient) { }
 
-  public async getPokemons() {
-    let pokeArray: PokeData[] = []
-    let res: any = await lastValueFrom(this.http.get(this.pokeApi).pipe(
-      catchError(_error => this.http.get(this.pokeApi))))
+  public getPokemons(): Observable<PokeData[]> {
 
-    await res.results.map(async (pokemon: any) => {
-      await lastValueFrom(this.http.get(pokemon.url))
-        .then(async (response: any) => {
-          const pokeObj = {
-            name: response.name,
-            weight: response.weight,
-            img: response.sprites.front_default
+    return this.http.get<PokeApi>(this.pokeApi).pipe(
+      catchError(_error => this.http.get<PokeApi>(this.pokeApi))).pipe(
+        mergeMap((data) => {
+          let urls = data.results.map((result: PokeApiResult) => {
+            return this.http.get<Pokemon>(result.url).pipe(map((result: Pokemon) => {
+              return {
+                name: result.name,
+                img: result.sprites.front_default,
+                weight: result.weight
+              }
+            })
+            )
           }
-          pokeArray.push(pokeObj)
+          )
+          return forkJoin(urls)
         })
-
-    })
-
-    return pokeArray
+      )
   }
+
 
 }
