@@ -1,8 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { PokemonsService } from './pokemons.service';
-import { PokeData } from '../../app/interface/poke-data'
-import { lastValueFrom, of } from 'rxjs';
+
 
 
 
@@ -24,6 +23,8 @@ describe('PokemonsService', () => {
     expect(service).toBeTruthy();
   });
 
+  it('should return expected pokemons (HttpClient called once)', (done: DoneFn) => {
 
+  })
 
 });

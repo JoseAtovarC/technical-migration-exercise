@@ -1,7 +1,7 @@
 import * as angular from 'angular';
 import { downgradeComponent } from '@angular/upgrade/static';
 import { SelectComponent } from 'src/app/components/select/select.component';
-import { ApiServiceAngjs, PokeScope } from 'src/app/interface/poke-data';
+import { ApiServiceAngjs, PokeScope, Pokemon } from 'src/app/interface/poke-data';
 
 const selector: string = 'formPoke';
 
@@ -17,14 +17,14 @@ const options: any = {
             if (localStorage.getItem("selected") === "" || localStorage.getItem("selected") === null) {
                 $scope.selected = $scope.name
                 localStorage.setItem("selected", $scope.name)
-                await getPokemonInfo.getPokemon($scope.name).then((data: any) => {
+                await getPokemonInfo.getPokemon($scope.name).then((data: Pokemon) => {
                     console.log(data)
                     alert(`${data.name} id: ${data.id}`)
                 })
             } else {
 
                 $scope.selected = localStorage.getItem("selected")
-                await getPokemonInfo.getPokemon($scope.selected).then((data: any) => {
+                await getPokemonInfo.getPokemon($scope.selected).then((data: Pokemon) => {
                     console.log(data)
                     alert(`${data.name} id: ${data.id}`)
                 })
@@ -62,7 +62,7 @@ mod.factory('getPokemonInfo', ["$http", function ($http: ng.IHttpService) {
     let pokeApiMoreData = "https://pokeapi.co/api/v2/pokemon/"
     return {
         getPokemon: async function (name: string) {
-            return $http.get(pokeApiMoreData + name).then((response: any) => {
+            return $http.get(pokeApiMoreData + name).then((response) => {
                 return response.data;
             })
         }

@@ -12,13 +12,9 @@ const options = {
     bindings: {},
     controller: async function (PokemonsServices: ApiService, $scope: PokeScope) {
         $scope.pokenames = []
-        await PokemonsServices.getPokemons().then((p: PokeData) => {
-
-            return $scope.pokenames = p
-
+        PokemonsServices.getPokemons().subscribe((pokemons: PokeData[]) => {
+            $scope.pokenames = pokemons
         })
-
-
     },
     controllerAs: '$ctrl',
     templateUrl: 'main-page-component.html'
