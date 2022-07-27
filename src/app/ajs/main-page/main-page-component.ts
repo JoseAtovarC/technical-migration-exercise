@@ -3,7 +3,7 @@ import { downgradeInjectable, downgradeComponent } from '@angular/upgrade/static
 import { ApiService, PokeData, PokeScope } from 'src/app/interface/poke-data';
 import { PokemonsService } from 'src/app/services/pokemons.service';
 import { CardComponent } from 'src/app/components/card/card.component';
-import { forkJoin, Observable } from 'rxjs';
+
 
 
 const inject: string[] = [" PokemonsService ", "$scope"];

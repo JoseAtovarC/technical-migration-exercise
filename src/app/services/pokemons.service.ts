@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiService, PokeData, PokeApiResult, PokeApi, Pokemon } from '../interface/poke-data';
-import { lastValueFrom, catchError, Observable, map, mergeMap, forkJoin } from 'rxjs';
+import { catchError, Observable, map, mergeMap, forkJoin } from 'rxjs';
 
 
 
